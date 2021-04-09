@@ -74,9 +74,12 @@ def writer_DB (table:str , w_values , values_r , DB=values.sql_connect()):
         values_r = tuple([values_r])
     if type(w_values) == type('a'):
         w_values = tuple([w_values])
+    cursor.execute('INSERT INTO %s (%s) VALUES (%s)' % (table , ','.join(w_values) , '\"' + '\",\"'.join(values) +'\"'))
+    DB.commit()
+    DB.close()
 
 def cards_info (card_code):
     SQL = values.sql_connect()
     cursor = SQL.cursor()
     cursor.execute('SELECT * FROM card_info WHERE card_id="%s"' % card_code)
-    
+

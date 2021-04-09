@@ -5,6 +5,7 @@ from defs import defs
 import values
 from user import user
 from rooms import room
+from time import time
 
 bot = defs(values.bot_token())
 
